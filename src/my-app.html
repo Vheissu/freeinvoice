@@ -1,10 +1,5 @@
-<import from="./welcome-page"></import>
-<import from="./about-page.html"></import>
-<import from="./missing-page"></import>
+<import from="./components/app-sidebar.html" />
 
-<nav>
-  <a load="welcome-page">Welcome</a>
-  <a load="about-page">About</a>
-</nav>
+<app-sidebar></app-sidebar>
 
-<au-viewport default="welcome-page" fallback="missing-page"></au-viewport>
+<au-viewport fallback="missing-page"></au-viewport>
