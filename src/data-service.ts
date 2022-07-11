@@ -27,7 +27,8 @@ export class DataService {
         this.db = new Dexie('freeinvoice');
 
         this.db.version(1).stores({
-            invoices: `++id, date, status`
+            invoices: `++id, date, status`,
+            contacts: `++id, name, email, phone`
         });
     }
 
@@ -35,8 +36,16 @@ export class DataService {
         return await this.db.invoices.add(invoice);
     }
 
+    async addContact(contact: any) {
+        return await this.db.contacts.add(contact);
+    }
+
     async updateInvoice(id: number, invoice: IInvoice) {
         return await this.db.invoices.update(id, invoice);
+    }
+
+    async updateContact(id: number, contact: any) {
+        return await this.db.contacts.update(id, contact);
     }
 
     async updateInvoiceStatus(id: number, status: InvoiceStatus) {
@@ -47,12 +56,24 @@ export class DataService {
         return await this.db.invoices.delete(id);
     }
 
+    async deleteContact(id) {
+        return await this.db.contacts.delete(id);
+    }
+
     async getInvoices() {
         return await this.db.invoices.toArray();
     }
 
+    async getContacts() {
+        return await this.db.contacts.toArray();
+    }
+
     async getInvoiceById(id) {
         return await this.db.invoices.get(id);
+    }
+
+    async getContactById(id) {
+        return await this.db.contacts.get(id);
     }
 
     async getInvoiceDateRange(startDate, endDate) {
@@ -61,5 +82,21 @@ export class DataService {
 
     async getInvoicesByStatus(status) {
         return await this.db.invoices.where('status').equals(status).toArray();
+    }
+
+    async populateDb() {
+        await this.db.contacts.add({
+            name: 'John Doe',
+            email: 'johndoe@gmail.com', 
+            phone: '+1-555-555-5555'
+        });
+
+        await this.db.invoices.add({
+            client: 'John Doe',
+            currency: 'USD',
+            created: new Date(),
+            date: new Date(new Date().setMonth(new Date().getMonth() + 1)),
+            status: InvoiceStatus.Pending
+        });
     }
 }
