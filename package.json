@@ -8,20 +8,23 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "aurelia": "latest",
+    "aurelia": "^2.0.0-alpha.35",
     "bootstrap": "^5.2.0-beta1",
     "dexie": "^3.2.2"
   },
+  "overrides": {
+    "autoprefixer": "10.4.5"
+  },
   "devDependencies": {
-    "@aurelia/testing": "latest",
-    "@aurelia/ts-jest": "latest",
-    "@aurelia/webpack-loader": "latest",
+    "@aurelia/testing": "^2.0.0-alpha.35",
+    "@aurelia/ts-jest": "^2.0.0-alpha.35",
+    "@aurelia/webpack-loader": "^2.0.0-alpha.35",
     "@playwright/test": "^1.22.2",
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
-    "autoprefixer": "^10.4.7",
+    "autoprefixer": "10.4.5",
     "css-loader": "^6.7.1",
     "dotenv-webpack": "^7.1.0",
     "eslint": "^8.17.0",
