@@ -28,6 +28,7 @@
     "css-loader": "^6.7.1",
     "dotenv-webpack": "^7.1.0",
     "eslint": "^8.17.0",
+    "fake-indexeddb": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "htmlhint": "^1.1.4",
     "jest": "^28.1.1",
@@ -46,10 +47,9 @@
     "webpack-dev-server": "^4.9.2"
   },
   "scripts": {
-    "lint:js": "eslint src test e2e --ext .js,.ts",
+    "lint:js": "eslint src test --ext .js,.ts",
     "lint:html": "htmlhint -c .htmlhintrc src",
     "lint": "npm run lint:js && npm run lint:html",
-    "pretest": "npm run lint",
     "start": "webpack serve",
     "build": "rimraf dist && webpack --env production",
     "analyze": "rimraf dist && webpack --env production --analyze",
@@ -71,6 +71,12 @@
           }
         }
       ]
+    },
+    "setupFiles": [
+      "fake-indexeddb/auto"
+    ],
+    "moduleNameMapper": {
+      "^dexie$": "dexie"
     },
     "collectCoverage": true,
     "collectCoverageFrom": [
