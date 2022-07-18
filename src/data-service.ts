@@ -6,7 +6,7 @@ export const IDataService = DI.createInterface<IDataService>('IDataService', x =
 export interface IDataService extends DataService {}
 
 interface IInvoice {
-    id: number;
+    id?: number;
     client: string;
     currency: string;
     created: Date;
