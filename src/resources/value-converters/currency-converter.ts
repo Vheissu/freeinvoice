@@ -7,9 +7,9 @@ export class CurrencyValueConverter {
             return value;
         }
 
-        let locale = config.locale || 'en-US';
+        const locale = config.locale || 'en-US';
 
-        let props = {
+        const props = {
             style: 'currency',
             currency: config.currency || 'USD',
             currencyDisplay: config.displayBy || 'symbol'

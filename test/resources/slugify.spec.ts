@@ -1,5 +1,5 @@
 import { SlugifyValueConverter } from './../../src/resources/value-converters/slugify-converter';
-import { assert, createFixture, setPlatform } from '@aurelia/testing';
+import { createFixture, setPlatform } from '@aurelia/testing';
 import { BrowserPlatform } from '@aurelia/platform-browser';
 
 const platform = new BrowserPlatform(window);

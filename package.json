@@ -8,23 +8,20 @@
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "aurelia": "^2.0.0-alpha.35",
-    "bootstrap": "^5.2.0-beta1",
+    "aurelia": "latest",
+    "bootstrap": "^5.2.1",
     "dexie": "^3.2.2"
   },
-  "overrides": {
-    "autoprefixer": "10.4.5"
-  },
   "devDependencies": {
-    "@aurelia/testing": "^2.0.0-alpha.35",
-    "@aurelia/ts-jest": "^2.0.0-alpha.35",
-    "@aurelia/webpack-loader": "^2.0.0-alpha.35",
+    "@aurelia/testing": "latest",
+    "@aurelia/ts-jest": "latest",
+    "@aurelia/webpack-loader": "latest",
     "@playwright/test": "^1.22.2",
     "@types/jest": "^28.1.1",
     "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
-    "autoprefixer": "10.4.5",
+    "autoprefixer": "^10.4.7",
     "css-loader": "^6.7.1",
     "dotenv-webpack": "^7.1.0",
     "eslint": "^8.17.0",
@@ -47,9 +44,10 @@
     "webpack-dev-server": "^4.9.2"
   },
   "scripts": {
-    "lint:js": "eslint src test --ext .js,.ts",
+    "lint:js": "eslint src test e2e --ext .js,.ts",
     "lint:html": "htmlhint -c .htmlhintrc src",
     "lint": "npm run lint:js && npm run lint:html",
+    "pretest": "npm run lint",
     "start": "webpack serve",
     "build": "rimraf dist && webpack --env production",
     "analyze": "rimraf dist && webpack --env production --analyze",
@@ -63,14 +61,7 @@
     "testEnvironment": "jsdom",
     "transform": {
       "\\.(css|less|sass|scss|styl|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "jest-transform-stub",
-      "\\.(ts|html)$": [
-        "@aurelia/ts-jest",
-        {
-          "defaultShadowOptions": {
-            "mode": "open"
-          }
-        }
-      ]
+      "\\.(ts|html)$": "@aurelia/ts-jest"
     },
     "setupFiles": [
       "fake-indexeddb/auto"

@@ -3,6 +3,7 @@ import { DI } from 'aurelia';
 import Dexie from 'dexie';
 
 export const IDataService = DI.createInterface<IDataService>('IDataService', x => x.singleton(DataService));
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface IDataService extends DataService {}
 
 interface IInvoice {
@@ -36,7 +37,7 @@ export class DataService {
         return await this.db.invoices.add(invoice);
     }
 
-    async addContact(contact: any) {
+    async addContact(contact: unknown) {
         return await this.db.contacts.add(contact);
     }
 
@@ -44,7 +45,7 @@ export class DataService {
         return await this.db.invoices.update(id, invoice);
     }
 
-    async updateContact(id: number, contact: any) {
+    async updateContact(id: number, contact: unknown) {
         return await this.db.contacts.update(id, contact);
     }
 
